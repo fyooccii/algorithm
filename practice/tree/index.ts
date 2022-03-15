@@ -1,42 +1,45 @@
 class Tree {
-    private val: number;
-    private left: Tree;
-    private right: Tree;
+    private _val: number;
+    get val() {
+        return this._val;
+    }
+    private _left: Tree;
+    private _right: Tree;
     constructor(val: number, left?: Tree, right?: Tree) {
-        this.val = val;
-        this.left = !left ? null : left;
-        this.right = !right ? null : right;
+        this._val = val;
+        this._left = !left ? null : left;
+        this._right = !right ? null : right;
     }
 
     // 前序遍历
-    public static preOrder(t: Tree) {
-        console.log(t.val);
-        if (t.left) {
-            Tree.preOrder(t.left);
+    static preOrder(t: Tree) {
+        console.log(t._val);
+        if (t._left) {
+            Tree.preOrder(t._left);
         }
-        if (t.right) {
-            Tree.preOrder(t.right);
+        if (t._right) {
+            Tree.preOrder(t._right);
         }
     }
     // 中序遍历
-    public static inOrder(t: Tree) {
-        if (t.left) {
-            Tree.inOrder(t.left);
+    static inOrder(t: Tree) {
+        if (t._left) {
+            Tree.inOrder(t._left);
         }
-        console.log(t.val);
-        if (t.right) {
-            Tree.inOrder(t.right);
+        console.log(t._val);
+        if (t._right) {
+            Tree.inOrder(t._right);
         }
     }
     // 后序遍历
-    public static postOrder(t: Tree) {
-        if (t.left) {
-            Tree.inOrder(t.left);
+    static postOrder(t: Tree) {
+        if (t._left) {
+            Tree.inOrder(t._left);
         }
-        if (t.right) {
-            Tree.inOrder(t.right);
+        if (t._right) {
+            Tree.inOrder(t._right);
         }
-        console.log(t.val);
+        console.log(t._val);
     }
 }
 
@@ -50,6 +53,7 @@ function generateTree() {
 }
 
 const tree = generateTree();
+// console.log(tree['_val']);
 
 Tree.preOrder(tree);
 console.log('===');
