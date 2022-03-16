@@ -13,11 +13,11 @@ class Queue<T> {
     }
     private _head: number;
     get head() {
-        return this._head;
+        return this._data[this._head];
     }
     private _tail: number;
     get tail() {
-        return this._tail;
+        return this._data[this._tail];
     }
     constructor(size: number) {
         this._size = size;
@@ -55,27 +55,29 @@ class Queue<T> {
 
     // 出队
     dequeue(): T {
-        if (this._length === 0) {
-            this._head = this._tail = null;
-            return null;
-        }
-        const result = this._data[this._head];
-        this._data[this._head] = undefined;
-        this._head++;
+        // 队列为空时
+        if (this._length === 0) return null;
         this._length--;
-        return result;
+        // 出队组后一个元素
+        if (this._length === 0) {
+            const result = this._data[this._head];
+            // 重置数组
+            this._head = this._tail = null;
+            this._data = new Array(this._size);
+            return result;
+        }
+        return this._data[this._head++];
     }
 }
 
 const q = new Queue<string>(3);
 q.enqueue('1');
 q.enqueue('2');
-console.log(q);
 console.log(q.dequeue());
 q.enqueue('1');
+console.log(q, q.data);
 console.log(q.dequeue());
-q.enqueue('5');
-q.enqueue('6');
-console.log(q.dequeue());
-console.log(q);
-console.log(q.data);
+console.log(q, q.data);
+q.enqueue('9');
+console.log(q, q.data);
+// console.log(q.head);
