@@ -1,7 +1,8 @@
 {
     "compilerOptions": {
+        "target": "ES5",
         "lib": ["DOM", "DOM.Iterable", "ESNext"],
         "sourceMap": true
     },
-    "include": ["offer"]
+    "include": ["offer", "practice"]
 }
