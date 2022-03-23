@@ -3,8 +3,8 @@ class NodeC {
         this.name = name;
         this.next = null;
     }
-    public name: string;
-    public next: NodeC;
+    name: string;
+    next: NodeC;
 }
 
 class LinkedList {
@@ -13,7 +13,7 @@ class LinkedList {
         this.head = node;
     }
 
-    public insertNode(name: string, nodeName: string): boolean {
+    insertNode(name: string, nodeName: string): boolean {
         let currentNode: NodeC = this.head;
         const newNode: NodeC = new NodeC(nodeName);
         do {
@@ -28,7 +28,7 @@ class LinkedList {
         return false;
     }
 
-    public removeNode(nodeName: string): boolean {
+    removeNode(nodeName: string): boolean {
         if (this.head.name === nodeName) {
             this.head = this.head.next;
             return true;
@@ -45,7 +45,7 @@ class LinkedList {
         return false;
     }
 
-    public reverseList(): boolean {
+    reverseList(): boolean {
         let currentNode: NodeC = this.head;
         let prevNode: NodeC = null;
         while (currentNode) {
@@ -58,7 +58,7 @@ class LinkedList {
         return true;
     }
 
-    public findNode(nodeName: string): NodeC {
+    findNode(nodeName: string): NodeC {
         let currentNode: NodeC = this.head;
         while (currentNode) {
             if (currentNode.name === nodeName) return currentNode;
@@ -67,7 +67,7 @@ class LinkedList {
         return null;
     }
 
-    public printList() {
+    printList() {
         let toString: string = '';
         let currentNode: NodeC = this.head;
         while (currentNode) {
@@ -89,8 +89,6 @@ function generateList(List: LinkedList, length: number) {
 }
 
 const list = new LinkedList(new NodeC('n0'));
-// @ts-ignore
-window.list = list;
 generateList(list, 10000);
 list.reverseList();
 list.printList();
