@@ -24,6 +24,7 @@ class LRUCache {
             this.cache.delete(key);
         } else {
             if (this.cache.size === this.capacity) {
+                // 删除map中第一个最近最少使用的数据，这里表示第一个key-value
                 this.cache.delete(this.cache.keys().next().value);
             }
         }
